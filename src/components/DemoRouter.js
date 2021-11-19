@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CrudDemo from './CrudDemo';
 import PersonDetails from './PersonDetails';
+import UpdateThePerson from './UpdateThePerson';
 
 const DemoRouter = () => {
 
@@ -17,6 +18,7 @@ const DemoRouter = () => {
                         <Route path="/about" component={About} />
                         <Route path="/crud" component={CrudDemo} />
                         <Route path="/details/:id" component={PersonDetails} />
+                        <Route path="/updates/:id" component={UpdateThePerson} />
 
                         <Route component={NotFound} />
                     </Switch>

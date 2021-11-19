@@ -65,11 +65,15 @@ const CrudDemo = () => {
 
             }
 
+            const update = () => {
+                history.push(`/updates/${props.id}`);
+            }
+
             return (
             <div>
                 <button type="button" className="btn btn-primary" onClick={showData} >Details</button>
                 <button type="button" className="btn btn-danger m-2" onClick={deleteById}>Delete</button>
-                <button type="button" className="btn btn-warning">Edit</button>
+                <button type="button" className="btn btn-warning" onClick={update}>Edit</button>
             </div>)
         };
 
