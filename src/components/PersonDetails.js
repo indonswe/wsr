@@ -14,7 +14,7 @@ const PersonDetails = () => {
         const personService = new PersonService();
         personService.getPersonById(params.id).then(res => {
             //update state
-            console.log("PESRON:" , res);
+            console.log("PERSON:" , res);
             if(res.status === 200){
                 console.log(res.data);
                 setPerson(res.data);
