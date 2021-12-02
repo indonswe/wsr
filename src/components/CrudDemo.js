@@ -28,7 +28,8 @@ const CrudDemo = () => {
             if(res.status === 200){
                 setPersons(res.data);
                 setMessage({value: 'Operation is Done!', type: 'success'});
-                dispatch(incrementByAmount(persons.length))
+                dispatch(incrementByAmount(persons.length));
+                console.log("Length: " + persons.length);
             } else {
                 // display error message
                 setMessage({value: 'Operation is Failed!', type: 'danger'});
