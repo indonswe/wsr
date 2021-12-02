@@ -2,12 +2,22 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
 import PersonService from '../service/PersonService';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment, incrementByAmount } from '../reduxComponents/thePersonSlice'
+//import styles from './Counter.module.css'
+
+/*export function Persons() {
+  const count = useSelector(state => state.persons.value)
+  const dispatch = useDispatch()
+}*/
 
 const CrudDemo = () => {
     const [persons,setPersons] = useState([]);
     const [message, setMessage] = useState({value: '', type: ''});
 
     const [reload, setReload] = useState(false);
+    //const count = useSelector(state => state.persons.value)
+    const dispatch = useDispatch()
 
     // useEffect 
     useEffect(()=>{
@@ -18,6 +28,7 @@ const CrudDemo = () => {
             if(res.status === 200){
                 setPersons(res.data);
                 setMessage({value: 'Operation is Done!', type: 'success'});
+                dispatch(incrementByAmount(persons.length))
             } else {
                 // display error message
                 setMessage({value: 'Operation is Failed!', type: 'danger'});
