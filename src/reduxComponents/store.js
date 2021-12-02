@@ -4,5 +4,5 @@ import counterReducer from './counterSlice'
 import theAmountReducer from './thePersonSlice'
 
 export default configureStore({
-  reducer: {counter: counterReducer, amountOfPersons: theAmountReducer}
+  reducer: {counter: counterReducer, persons: theAmountReducer}
 })

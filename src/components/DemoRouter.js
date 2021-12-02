@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CrudDemo from './CrudDemo';
 import PersonDetails from './PersonDetails';
 import UpdateThePerson from './UpdateThePerson';
+import { Counter } from '../reduxComponents/counter';
+import { Persons } from '../reduxComponents/persons';
 
 const DemoRouter = () => {
 
@@ -29,8 +31,16 @@ const DemoRouter = () => {
 
 };
 
-const Welcome = () => <b>Welcome Page</b>;
-const Home = () => <b>Home Page</b>;
+const Welcome = () => {
+    return(
+<Persons/>
+    )
+}
+const Home = () => {
+    return(
+        <Counter/>
+            )
+} 
 const About = () => <b>About Us Page</b>;
 const Person = () => <b>Person Page</b>;
 const NotFound = () => <b>Page Not Found</b>;
