@@ -42,7 +42,12 @@ const Home = () => {
             )
 } 
 const About = () => <b>About Us Page</b>;
-const Person = () => <b>Person Page</b>;
+const Person = () => {
+<b>Person Page</b>;
+return(
+    <Counter/>
+        )
+} 
 const NotFound = () => <b>Page Not Found</b>;
 
 const Header = () => {

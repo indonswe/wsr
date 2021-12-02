@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const thePersonSlice = createSlice({
-  name: 'counter',
+  name: 'persons',
   initialState: {
     value: 5
   },

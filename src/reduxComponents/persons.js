@@ -4,7 +4,7 @@ import { decrement, increment, incrementByAmount } from './thePersonSlice'
 //import styles from './Counter.module.css'
 
 export function Persons() {
-  const count = useSelector(state => state.counter.value)
+  const count = useSelector(state => state.persons.value)
   const dispatch = useDispatch()
 
   return (
