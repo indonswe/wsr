@@ -19,7 +19,7 @@ const DemoRouter = () => {
     const [persons,setPersons] = useState([]);
     const [reload, setReload] = useState(false);
     const [message, setMessage] = useState({value: '', type: ''});
-    const count = useSelector(state => state.persons.value)
+    /*const count = useSelector(state => state.persons.value)
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -40,7 +40,7 @@ const DemoRouter = () => {
         });
 
         // update the state
-    },[reload]);
+    },[reload]);*/
 
     return (
         <Fragment>
@@ -79,13 +79,19 @@ const GetThePerson = () => {
 
 const Welcome = () => {
     return(
-
+        <div className="container">
+        <div>Welcome: </div>
         <Counter/>
+        </div>
             )
+    
 }
 const Home = () => {
     return(
+        <div className="container">
+        <div>Home: </div>
         <Counter/>
+        </div>
             )
 } 
 const About = () => <b>About Us Page</b>;
