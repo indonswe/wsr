@@ -7,7 +7,11 @@ export function Persons() {
   const count = useSelector(state => state.persons.value)
   const dispatch = useDispatch()
 
-  return (
+  return(
+    <span>{count}</span>
+  )
+
+  /*return (
     <div>
       <div>
         <button
@@ -31,5 +35,5 @@ export function Persons() {
         </button>
       </div>
     </div>
-  )
+  )*/
 }

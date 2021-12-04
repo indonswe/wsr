@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const thePersonSlice = createSlice({
   name: 'persons',
   initialState: {
-    value: 5
+    value: 0
   },
   reducers: {
     increment: state => {
@@ -18,7 +18,7 @@ decrement: state => {
   state.value -= 1
 },
 incrementByAmount: (state, action) => {
-  state.value += action.payload
+  state.value = action.payload
 }
 }
 })

@@ -1,12 +1,46 @@
-import React, { Fragment } from 'react';
+//import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CrudDemo from './CrudDemo';
 import PersonDetails from './PersonDetails';
 import UpdateThePerson from './UpdateThePerson';
 import { Counter } from '../reduxComponents/counter';
 import { Persons } from '../reduxComponents/persons';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
+import PersonService from '../service/PersonService';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment, incrementByAmount } from '../reduxComponents/thePersonSlice'
+
+
 
 const DemoRouter = () => {
+
+    const [persons,setPersons] = useState([]);
+    const [reload, setReload] = useState(false);
+    const [message, setMessage] = useState({value: '', type: ''});
+    const count = useSelector(state => state.persons.value)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        // call API
+        const personService = new PersonService();
+        personService.findAll().then((res)=>{
+            console.log("Res: " + res);
+            if(res.status === 200){
+                setPersons(res.data);
+                console.log("Persons: " + res.data);
+                setMessage({value: 'Operation is Done!', type: 'success'});
+                dispatch(incrementByAmount(persons.length));
+                console.log("Length: " + persons.length);
+            } else {
+                // display error message
+                setMessage({value: 'Operation is Failed!', type: 'danger'});
+            }
+        });
+
+        // update the state
+    },[reload]);
 
     return (
         <Fragment>
@@ -31,10 +65,23 @@ const DemoRouter = () => {
 
 };
 
+const GetThePerson = () => {
+    const [persons,setPersons] = useState([]);
+    const personService = new PersonService();
+    const dispatch = useDispatch()
+        personService.findAll().then((res)=>{
+            setPersons(res.data);
+            dispatch(incrementByAmount(persons.length));
+            })
+            return(null)
+        
+} 
+
 const Welcome = () => {
     return(
-<Persons/>
-    )
+
+        <Counter/>
+            )
 }
 const Home = () => {
     return(
@@ -42,11 +89,18 @@ const Home = () => {
             )
 } 
 const About = () => <b>About Us Page</b>;
+
+
 const Person = () => {
-<b>Person Page</b>;
-return(
-    <Counter/>
-        )
+    
+    return(
+        <div className="container">
+           <div>Amount of persons</div>
+           <GetThePerson/>
+            <Persons/>
+        </div>
+        
+            )
 } 
 const NotFound = () => <b>Page Not Found</b>;
 
