@@ -11,6 +11,12 @@ import { useHistory } from 'react-router';
 import PersonService from '../service/PersonService';
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, incrementByAmount } from '../reduxComponents/thePersonSlice'
+import 'primereact/resources/themes/lara-light-indigo/theme.css';    //theme
+import 'primereact/resources/primereact.min.css';                    //core css
+import 'primeicons/primeicons.css';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
 
 
 
@@ -19,28 +25,7 @@ const DemoRouter = () => {
     const [persons,setPersons] = useState([]);
     const [reload, setReload] = useState(false);
     const [message, setMessage] = useState({value: '', type: ''});
-    /*const count = useSelector(state => state.persons.value)
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        // call API
-        const personService = new PersonService();
-        personService.findAll().then((res)=>{
-            console.log("Res: " + res);
-            if(res.status === 200){
-                setPersons(res.data);
-                console.log("Persons: " + res.data);
-                setMessage({value: 'Operation is Done!', type: 'success'});
-                dispatch(incrementByAmount(persons.length));
-                console.log("Length: " + persons.length);
-            } else {
-                // display error message
-                setMessage({value: 'Operation is Failed!', type: 'danger'});
-            }
-        });
-
-        // update the state
-    },[reload]);*/
+    
 
     return (
         <Fragment>
@@ -94,8 +79,17 @@ const Home = () => {
         </div>
             )
 } 
-const About = () => <b>About Us Page</b>;
-
+const About = () => {
+    const [text,setText] = useState();
+    //const toastRef = useRef();
+    return(
+        <div className="container">
+        <div>About </div>
+        <InputText value ={text} onChange={e =>setText(e.target.value)}/>
+        <Button type ="button" label="Submit" icon="pi pi-check"></Button>
+        </div>
+            )
+    }
 
 const Person = () => {
     
