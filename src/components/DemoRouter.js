@@ -26,6 +26,8 @@ const DemoRouter = () => {
     const [persons,setPersons] = useState([]);
     const [reload, setReload] = useState(false);
     const [message, setMessage] = useState({value: '', type: ''});
+
+    
     
 
     return (
@@ -140,8 +142,7 @@ return (
 const Footer = () => {
     return (
 <div className="App">
-    <h3>GeeksforGeeks</h3>
-    <h2>Sticky Footer using Reactjs!</h2>
+    
     <footer className="footer">
     <p>This is react sticky footer!!</p>
   
