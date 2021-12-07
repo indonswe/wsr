@@ -17,6 +17,7 @@ import 'primeicons/primeicons.css';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import "./App.css";
 
 
 
@@ -31,6 +32,7 @@ const DemoRouter = () => {
         <Fragment>
             <Router>
                 <Header />
+                
                 <div className="container">
                     <Switch>
                         <Route exact path="/" component={Welcome} />
@@ -44,6 +46,7 @@ const DemoRouter = () => {
                         <Route component={NotFound} />
                     </Switch>
                 </div>
+                <Footer />
             </Router>
         </Fragment>
     );
@@ -132,6 +135,31 @@ return (
 
     </nav>
 )
+};
+
+const Footer = () => {
+    return (
+<div className="App">
+    <h3>GeeksforGeeks</h3>
+    <h2>Sticky Footer using Reactjs!</h2>
+    <footer className="footer">
+    <p>This is react sticky footer!!</p>
+  
+  </footer>
+  </div>
+        /*<footer className="footer">
+    <p>This is react sticky footer!!</p>
+  
+  </footer>*/
+/*<div className="bg-light text-center text-lg-start">
+  
+  <div className="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a className="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  </div>*/
+  
+    )
 };
 
 export default DemoRouter;
