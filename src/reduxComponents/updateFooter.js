@@ -1,11 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, incrementByAmount } from './thePersonSlice'
+import { decrement, increment, incrementByAmount } from './updateFooterSlice'
 //import styles from './Counter.module.css'
 
-export function updateFooter() {
-  const count = useSelector(state => state.persons.value)
+export function UpdateFooter() {
+  const count = useSelector(state => state.textUpdate.value)
   const dispatch = useDispatch()
+  console.log("UpdateFooter: " + count)
 
   return(
     <span>{count}</span>

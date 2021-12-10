@@ -18,6 +18,8 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import "./App.css";
+import { UpdateFooter } from "../reduxComponents/updateFooter";
+import { setTextValue } from "../reduxComponents/updateFooterSlice";
 
 
 
@@ -86,12 +88,18 @@ const Home = () => {
 } 
 const About = () => {
     const [text,setText] = useState();
+    //<form className="form-control m-2 p-3" onSubmit={handleSubmit(savePerson)}></form>
     //const toastRef = useRef();
+    const dispatch = useDispatch()
+    const handleClick = () => {
+        console.log("Handle: " + text)
+        dispatch(setTextValue(text));
+    }
     return(
         <div className="container">
         <div>About </div>
         <InputText value ={text} onChange={e =>setText(e.target.value)}/>
-        <Button type ="button" label="Submit" icon="pi pi-check"></Button>
+        <Button type ="button" label="Submit" icon="pi pi-check" onClick={handleClick}></Button>
         </div>
             )
     }
@@ -140,11 +148,13 @@ return (
 };
 
 const Footer = () => {
+    console.log("Footer: ")
     return (
 <div className="App">
     
     <footer className="footer">
     <p>This is react sticky footer!!</p>
+    <UpdateFooter/>
   
   </footer>
   </div>
