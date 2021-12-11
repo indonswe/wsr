@@ -1,6 +1,7 @@
 //import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CrudDemo from './CrudDemo';
+import CrudRedux from './CrudRedux';
 import PersonDetails from './PersonDetails';
 import UpdateThePerson from './UpdateThePerson';
 import { Counter } from '../reduxComponents/counter';
@@ -44,6 +45,7 @@ const DemoRouter = () => {
                         <Route path="/person" component={Person} />
                         <Route path="/about" component={About} />
                         <Route path="/crud" component={CrudDemo} />
+                        <Route path="/crudRedux" component={CrudRedux} />
                         <Route path="/details/:id" component={PersonDetails} />
                         <Route path="/updates/:id" component={UpdateThePerson} />
 
@@ -129,13 +131,16 @@ return (
                     <Link className="navbar-brand" to="/">Welcome</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="navbar-brand" to="/person">Person</Link>
+                    <Link className="navbar-brand" to="/person">Amount</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="navbar-brand" to="/about">About Us</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="navbar-brand" to="/crud">CRUD</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="navbar-brand" to="/crudRedux">CRUDREDUX</Link>
                 </li>
             </ul>
             <form>
