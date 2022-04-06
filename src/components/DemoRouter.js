@@ -1,6 +1,8 @@
 //import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CrudDemo from './CrudDemo';
+import CrudDemocopy from './CrudDemocopy';
+import Car from './Car';
 import CrudRedux from './CrudRedux';
 import PersonDetails from './PersonDetails';
 import UpdateThePerson from './UpdateThePerson';
@@ -45,6 +47,7 @@ const DemoRouter = () => {
                         <Route path="/person" component={Person} />
                         <Route path="/about" component={About} />
                         <Route path="/crud" component={CrudDemo} />
+                        <Route path="/crudDemocopy" component={Car} />
                         <Route path="/crudRedux" component={CrudRedux} />
                         <Route path="/details/:id" component={PersonDetails} />
                         <Route path="/updates/:id" component={UpdateThePerson} />
@@ -75,7 +78,7 @@ const Welcome = () => {
     return(
         <div className="container">
         <div>Welcome: </div>
-        <Counter/>
+        <Counter/> 
         </div>
             )
     
@@ -138,6 +141,9 @@ return (
                 </li>
                 <li className="nav-item">
                     <Link className="navbar-brand" to="/crud">CRUD</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="navbar-brand" to="/crudDemocopy">CRUDDemo</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="navbar-brand" to="/crudRedux">CRUDREDUX</Link>
