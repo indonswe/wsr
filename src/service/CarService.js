@@ -8,6 +8,11 @@ class CarService {
       return await axios.get(baseURL).then(res => res);
     };
 
+    saveCar = async (data) => {
+      console.log("Data at saveCar", data);
+        return await axios.post(baseURL, data).then(res => res);
+    };
+
     
 
 }

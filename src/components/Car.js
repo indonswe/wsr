@@ -43,13 +43,15 @@ const Car = () => {
         // update the state
     },[reload]);
 
+    const Table = () => {
+    
     const TableHeader = ()=> {
         return (
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    
+                    <th>Year</th>
                 </tr>
             </thead>
             )
@@ -64,7 +66,7 @@ const Car = () => {
                     <tr key={category.carOneId}>
                         <td>{category.carOneId}</td>
                         <td>{category.carName} </td>
-                        
+                        <td>{category.carYear} </td>
                         
                     </tr>
                 ))   
@@ -81,14 +83,70 @@ const Car = () => {
             </table>
         </div>
         );
+    }
 
+        const Form = () => {
 
-    /*return(
-        <div className="container">
-        <div>Home: </div>
-        <Counter/>
-        </div>
-            )*/
+            const {register, handleSubmit, reset, formState: {errors} } = useForm();
+    
+            const saveCar = (data) => {
+                console.log(data);
+                // call  API
+                const service = new CarService();
+                service.saveCar(data).then(res => {
+                    if(res.status === 201){
+                        // show message
+                        setMessage({value: 'Operation is done for car Id:' + res.data.id , type: 'success'});
+                         // update the state = reload the useEffect
+                         setReload(!reload);
+                    }else {
+                        // show error message
+                        setMessage({value: 'Error:'+ res.status, type: 'danger'});
+                    }
+                    console.log("Res at saveCar", res);
+                });
+               
+            }
+    
+    
+            return(
+                <Fragment>
+                    <form className="form-control m-2 p-3" onSubmit={handleSubmit(saveCar)}>
+                        <div className="row mb-3">
+                            <div className="col-6">
+                                <input type="text" className="form-control" {...register("carName", {required: true})} placeholder="Enter CarName" />
+                                {errors.carName && <span className="text-danger">CarName is Required!</span>}
+                            </div>
+                            <div className="col-6">
+                                <input type="number" className="form-control" {...register("carYear", {required: true})} placeholder="Enter year" />
+                                {errors.lastName && <span className="text-danger">Year is Required!</span>}
+                            </div>
+                        </div>
+                        <div className="row mb-3">
+                            <div className="col">
+                                <input type="number" className="form-control" {...register("carKilometre", {required: true})} placeholder="Enter kilometre" />
+                                {errors.email && <span className="text-danger">Kilometre is Required!</span>}
+                            </div>
+                        </div>
+                        <div className="row mb-3">
+                            <div className="col">
+                                <input type="number" className="form-control" {...register("carPrice")} placeholder="Enter Price" />
+                            </div>
+                        </div>  
+                        <button type="submit" className="btn btn-success">Add</button>
+                        <button type="button" className="btn btn-danger" onClick={()=> reset() }>Reset</button>
+                    </form>
+                </Fragment>
+            );
+        };
+    
+        return (
+            <div className="container">
+                {message && <div className={'alert alert-' + message.type}>{message.value}</div> }
+                <Form />
+                <Table />
+            </div>
+        );
 } 
 
 export default Car;
